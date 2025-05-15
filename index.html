@@ -327,7 +327,14 @@
         <div class="qualification__wrapper">
           <div class="qualification__footer">
             <p class="qualification__footer-text">See my full resume</p>
-            <a href="#!" class="btn btn-white">Download CV</a>
+            <a
+              href="resume/JustinCV-t2.pdf"
+              class="btn btn-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View CV
+            </a>
           </div>
         </div>
       </div>
@@ -456,7 +463,15 @@
           </p>
         </div>
 
-        <form class="contactForm" data-aos="zoom-in" data-aos-duration="1000">
+        <!-- Netlify Form Starts Here -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          class="contactForm"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
           <div class="input-box">
             <input type="text" name="name" placeholder="Name" required />
             <input
@@ -469,12 +484,12 @@
 
           <textarea
             name="message"
-            id=""
             cols="30"
             rows="10"
             placeholder="Your Message"
             required
           ></textarea>
+
           <div
             class="contact-button"
             data-aos="fade-zoom-in"
@@ -482,7 +497,7 @@
             data-aos-delay="500"
             data-aos-duration="1000"
           >
-            <button href="#!" class="btn btn-red" name="submit" type="submit">
+            <button class="btn btn-red" name="submit" type="submit">
               Send Message
             </button>
           </div>

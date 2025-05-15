@@ -538,7 +538,7 @@ h5 {
   display: inline-block;
   background-color: var(--primary-accent);
   color: var(--white-color);
-  border: 1px solid var(--white-color);
+  border: 1px solid var(--black-color);
   min-width: 280px;
   padding: 20px 40px;
   bottom: -100px;

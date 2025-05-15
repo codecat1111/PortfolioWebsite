@@ -1,38 +1,19 @@
 const form = () => {
-  const contactForm = document.querySelector(".contactForm"),
-    responseMessage = document.querySelector(".response");
+  const contactForm = document.querySelector(".contactForm");
+  const responseMessage = document.querySelector(".response");
 
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  contactForm.addEventListener("submit", (e) => {
     responseMessage.classList.add("open");
     responseMessage.textContent = "Please wait...";
 
-    async function getData() {
-      try {
-        const response = await fetch("mail.php", {
-          method: "POST",
-          body: formData,
-        });
-        if (!response.ok) {
-          responseMessage.textContent = result;
-        }
+    // Let the form submit normally — Netlify will handle it
 
-        const result = await response.text();
-        responseMessage.textContent = result;
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-
-    getData()
-      .then(
-        setTimeout(() => {
-          responseMessage.classList.remove("open");
-        }, 3000)
-      )
-      .finally(form.reset());
+    setTimeout(() => {
+      responseMessage.textContent = "Thank you for your message!";
+      contactForm.reset(); // Clear form fields
+      responseMessage.classList.remove("open");
+    }, 3000);
   });
 };
+
 export default form;
