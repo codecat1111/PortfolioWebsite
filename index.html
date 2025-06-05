@@ -159,7 +159,9 @@
               to learn, and a dedication to producing clean and efficient code.
             </p>
             <div class="about-download-btn">
-              <a href="resume/JustinCV-t2.pdf" class="btn btn-white">Download CV</a>
+              <a href="resume/JustinCV-t2.pdf" class="btn btn-white"
+                >Download CV</a
+              >
             </div>
           </div>
           <div
@@ -353,7 +355,10 @@
               alt="Agency Website"
               class="project__img"
             />
-            <a href="https://github.com/codecat1111/local-ai-assistant" class="project__link">
+            <a
+              href="https://github.com/codecat1111/local-ai-assistant"
+              class="project__link"
+            >
               <h3 class="project__title">
                 Local AI Assistant - Chrome Extension
               </h3>
@@ -399,7 +404,10 @@
               alt="Gemini Interview Asisstant"
               class="project__img"
             />
-            <a href="https://github.com/codecat1111/Gemini-Interview-Assistant" class="project__link">
+            <a
+              href="https://github.com/codecat1111/Gemini-Interview-Assistant"
+              class="project__link"
+            >
               <h3 class="project__title">Gemini Interview Assistant</h3>
             </a>
             <p class="project__description">
@@ -464,7 +472,8 @@
         </div>
 
         <!-- Netlify Form Starts Here -->
-        <form netlify
+        <form
+          netlify
           name="contact"
           method="POST"
           data-netlify="true"
@@ -476,17 +485,22 @@
         >
           <!-- Add this hidden input -->
           <input type="hidden" name="form-name" value="contact" />
-          
+
           <!-- Honeypot field -->
           <p class="hidden">
             <label>
               Don't fill this out if you're human: <input name="bot-field" />
             </label>
           </p>
-          
+
           <div class="input-box">
             <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email Address" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
           </div>
 
           <textarea
@@ -498,22 +512,18 @@
           ></textarea>
 
           <!-- Add reCAPTCHA -->
-          <div data-netlify-recaptcha="true" data-callback="enableSubmit"></div>
+          <div data-netlify-recaptcha="true"></div>
 
           <div class="contact-button">
-            <button class="btn btn-red" name="submit" type="submit" id="submit-button" disabled>
+            <button class="btn btn-red" name="submit" type="submit">
               Send Message
             </button>
           </div>
         </form>
         <!-- Add response message container -->
         <div class="response"></div>
-
-        <script>
-          function enableSubmit() {
-            document.getElementById("submit-button").disabled = false;
-          }
-        </script>
+      </div>
+    </section>
     <footer class="footer">
       <div class="container">
         <div class="footer-row">
