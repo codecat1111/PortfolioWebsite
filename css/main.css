@@ -812,3 +812,13 @@ h5 {
 .view-more-container i {
   font-size: 1.2rem;
 }
+
+/* Hide honeypot field */
+.hidden {
+  display: none !important;
+}
+
+/* Style reCAPTCHA container */
+[data-netlify-recaptcha="true"] {
+  margin: 20px 0;
+}

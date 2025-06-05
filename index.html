@@ -468,12 +468,21 @@
           name="contact"
           method="POST"
           data-netlify="true"
+          data-netlify-recaptcha="true"
+          netlify-honeypot="bot-field"
           class="contactForm"
           data-aos="zoom-in"
           data-aos-duration="1000"
         >
           <!-- Add this hidden input -->
           <input type="hidden" name="form-name" value="contact" />
+          
+          <!-- Honeypot field -->
+          <p class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
           
           <div class="input-box">
             <input type="text" name="name" placeholder="Name" required />
@@ -487,6 +496,9 @@
             placeholder="Your Message"
             required
           ></textarea>
+
+          <!-- Add reCAPTCHA -->
+          <div data-netlify-recaptcha="true"></div>
 
           <div class="contact-button">
             <button class="btn btn-red" name="submit" type="submit">
