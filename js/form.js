@@ -1,6 +1,14 @@
 const form = () => {
   const contactForm = document.querySelector(".contactForm");
-  const responseMessage = document.querySelector(".response");
+  if (!contactForm) return;
+
+  // Create response element if it doesn't exist
+  let responseMessage = document.querySelector(".response");
+  if (!responseMessage) {
+    responseMessage = document.createElement("div");
+    responseMessage.className = "response";
+    contactForm.insertAdjacentElement('afterend', responseMessage);
+  }
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent default form submission
