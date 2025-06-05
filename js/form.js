@@ -1,6 +1,10 @@
 const form = () => {
   const contactForm = document.querySelector(".contactForm");
-  if (!contactForm) return;
+  const submitButton = document.getElementById("submit-button");
+  if (!contactForm || !submitButton) return;
+
+  // Ensure button starts disabled
+  submitButton.disabled = true;
 
   // Create response element if it doesn't exist
   let responseMessage = document.querySelector(".response");

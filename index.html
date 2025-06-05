@@ -498,16 +498,22 @@
           ></textarea>
 
           <!-- Add reCAPTCHA -->
-          <div data-netlify-recaptcha="true"></div>
+          <div data-netlify-recaptcha="true" data-callback="enableSubmit"></div>
 
           <div class="contact-button">
-            <button class="btn btn-red" name="submit" type="submit">
+            <button class="btn btn-red" name="submit" type="submit" id="submit-button" disabled>
               Send Message
             </button>
           </div>
         </form>
         <!-- Add response message container -->
         <div class="response"></div>
+
+        <script>
+          function enableSubmit() {
+            document.getElementById("submit-button").disabled = false;
+          }
+        </script>
     <footer class="footer">
       <div class="container">
         <div class="footer-row">
