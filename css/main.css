@@ -753,11 +753,36 @@ h5 {
   transform: translateY(-5px);
 }
 
+.qualification__company {
+  font-size: 1.6rem;
+  color: var(--secondary-accent);
+  margin-bottom: 1rem;
+}
+
 .qualification__title {
   font-size: 1.8rem;
   color: var(--main-text-color);
   margin-bottom: 1rem;
 }
+.qualification__company-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.qualification__company-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.qualification__company {
+  font-size: 1.6rem;
+  color: var(--secondary-accent);
+}
+
 
 .qualification__subtitle {
   font-size: 1.6rem;
