@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Blog Post - Justin Wilson John" />
+    <title id="postTitle">Blog Post - Justin Wilson John</title>
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon" />
+
+    <!-- Existing portfolio styles -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/media.css" />
+
+    <!-- Blog-specific styles -->
+    <link rel="stylesheet" href="blog.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
+    <!-- Prism.js for code highlighting -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header" class="header">
+      <div class="container container-lg">
+        <div class="header-nav">
+          <a
+            href="../index.html"
+            class="logo"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
+            Justin Wilson John
+          </a>
+          <nav id="nav" class="nav">
+            <ul class="nav-list" data-aos="fade-down" data-aos-duration="1000">
+              <li class="nav-item">
+                <a href="../index.html#home" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#project" class="nav-link">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a href="index.html" class="nav-link active">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+              </li>
+            </ul>
+            <button id="nav-btn" class="nav-btn">
+              <img
+                id="nav-btn-img"
+                src="../img/icons/open.svg"
+                alt="Navigation button"
+              />
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post-section">
+      <div class="container">
+        <!-- Loading state -->
+        <div class="loading-state" id="loadingState">
+          <div class="loading-spinner"></div>
+          <p>Loading post...</p>
+        </div>
+
+        <!-- Post not found state -->
+        <div class="post-not-found" id="postNotFound" style="display: none">
+          <i class="ri-file-search-line"></i>
+          <h2>Post Not Found</h2>
+          <p>The requested blog post could not be found.</p>
+          <a href="index.html" class="btn btn-white">
+            <i class="ri-arrow-left-line"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Post content -->
+        <article class="blog-post" id="blogPost" style="display: none">
+          <!-- Post navigation -->
+          <div
+            class="post-navigation"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <a href="index.html" class="back-link">
+              <i class="ri-arrow-left-line"></i>
+              <span>Back to Blog</span>
+            </a>
+          </div>
+
+          <!-- Post header -->
+          <header
+            class="post-header"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <div class="post-meta">
+              <span class="post-category" id="postCategory"></span>
+              <span class="post-date" id="postDate"></span>
+              <span class="post-read-time" id="postReadTime"></span>
+            </div>
+            <h1 class="post-title" id="postTitleMain"></h1>
+            <p class="post-excerpt" id="postExcerpt"></p>
+          </header>
+
+          <!-- Post image -->
+          <div
+            class="post-image-container"
+            id="postImageContainer"
+            style="display: none"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <img id="postImage" alt="" class="post-image" />
+          </div>
+
+          <!-- Post content -->
+          <div
+            class="post-content"
+            id="postContent"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
+            <!-- Content will be loaded dynamically -->
+          </div>
+
+          <!-- Post footer -->
+          <footer
+            class="post-footer"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+          >
+            <div class="post-tags" id="postTags">
+              <!-- Tags will be loaded dynamically -->
+            </div>
+
+            <div class="post-share">
+              <span class="share-text">Share this post:</span>
+              <div class="share-buttons">
+                <a
+                  href="#"
+                  id="shareTwitter"
+                  class="share-btn twitter"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="ri-twitter-line"></i>
+                </a>
+                <a
+                  href="#"
+                  id="shareLinkedIn"
+                  class="share-btn linkedin"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="ri-linkedin-line"></i>
+                </a>
+                <a
+                  href="#"
+                  id="shareFacebook"
+                  class="share-btn facebook"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="ri-facebook-line"></i>
+                </a>
+                <button id="copyLink" class="share-btn copy">
+                  <i class="ri-link"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="post-navigation-next-prev" id="postNavigation">
+              <!-- Navigation will be loaded dynamically -->
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="social-links-row footer-social">
+            <a href="https://github.com/codecat1111">
+              <img
+                src="../img/social_icons/Github_white.svg"
+                alt="Link to GitHub account"
+              />
+            </a>
+            <a href="https://www.linkedin.com/in/justin-wilson-996aab21b/">
+              <img
+                src="../img/social_icons/LinkedIN_white.svg"
+                alt="Link to linkedin profile"
+              />
+            </a>
+            <a href="https://x.com/JustinW45940958">
+              <img
+                src="../img/social_icons/icons8-x.svg"
+                alt="Link to X profile"
+              />
+            </a>
+            <a href="https://medium.com/@justin.wj2003">
+              <img
+                src="../img/social_icons/Medium_white.svg"
+                alt="Link to Medium profile"
+              />
+            </a>
+          </div>
+          <div class="footer-copyright">
+            <p>&copy; Copyright Justin Wilson John 2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <div id="goToTop" class="goToTop">
+      <a href="#top">
+        <img src="../img/icons/arrow_up.svg" alt="Back to top" />
+      </a>
+    </div>
+
+    <!-- Copy success notification -->
+    <div class="copy-notification" id="copyNotification">
+      <i class="ri-check-line"></i>
+      <span>Link copied to clipboard!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="blog-post.js"></script>
+  </body>
+</html>

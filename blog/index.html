@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Justin Wilson John's Blog - Insights on AI, Cybersecurity, and Web Development"
+    />
+    <title>Blog - Justin Wilson John</title>
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon" />
+
+    <!-- Existing portfolio styles -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/media.css" />
+
+    <!-- Blog-specific styles -->
+    <link rel="stylesheet" href="blog.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+  </head>
+
+  <body>
+    <!-- Header - Same as main portfolio -->
+    <header id="header" class="header">
+      <div class="container container-lg">
+        <div class="header-nav">
+          <a
+            href="../index.html"
+            class="logo"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
+            Justin Wilson John
+          </a>
+          <nav id="nav" class="nav">
+            <ul class="nav-list" data-aos="fade-down" data-aos-duration="1000">
+              <li class="nav-item">
+                <a href="../index.html#home" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#project" class="nav-link">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a href="index.html" class="nav-link active">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+              </li>
+            </ul>
+            <button id="nav-btn" class="nav-btn">
+              <img
+                id="nav-btn-img"
+                src="../img/icons/open.svg"
+                alt="Navigation button"
+              />
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+      <div class="container">
+        <div
+          class="blog-hero-content"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <h1 class="blog-hero-title">Blog</h1>
+          <p class="blog-hero-description">
+            Insights on AI, Cybersecurity, and Web Development
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Main Content -->
+    <section class="blog-main">
+      <div class="container">
+        <!-- Blog Controls -->
+        <div
+          class="blog-controls"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+        >
+          <div class="blog-search">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search posts..."
+              class="search-input"
+            />
+            <i class="ri-search-line search-icon"></i>
+          </div>
+          <div class="blog-filters">
+            <select id="categoryFilter" class="filter-select">
+              <option value="">All Categories</option>
+              <option value="AI">AI & Machine Learning</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Tech Insights">Tech Insights</option>
+            </select>
+            <select id="sortFilter" class="filter-select">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="title">Title A-Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="blog-grid" id="blogGrid">
+          <!-- Loading state -->
+          <div class="loading-state" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Loading posts...</p>
+          </div>
+
+          <!-- Posts will be dynamically loaded here -->
+        </div>
+
+        <!-- No results message -->
+        <div class="no-results" id="noResults" style="display: none">
+          <i class="ri-file-search-line"></i>
+          <h3>No posts found</h3>
+          <p>Try adjusting your search or filter criteria</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Same as main portfolio -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="social-links-row footer-social">
+            <a href="https://github.com/codecat1111">
+              <img
+                src="../img/social_icons/Github_white.svg"
+                alt="Link to GitHub account"
+              />
+            </a>
+            <a href="https://www.linkedin.com/in/justin-wilson-996aab21b/">
+              <img
+                src="../img/social_icons/LinkedIN_white.svg"
+                alt="Link to linkedin profile"
+              />
+            </a>
+            <a href="https://x.com/JustinW45940958">
+              <img
+                src="../img/social_icons/icons8-x.svg"
+                alt="Link to X profile"
+              />
+            </a>
+            <a href="https://medium.com/@justin.wj2003">
+              <img
+                src="../img/social_icons/Medium_white.svg"
+                alt="Link to Medium profile"
+              />
+            </a>
+          </div>
+          <div class="footer-copyright">
+            <p>&copy; Copyright Justin Wilson John 2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <div id="goToTop" class="goToTop">
+      <a href="#top">
+        <img src="../img/icons/arrow_up.svg" alt="Back to top" />
+      </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="blog.js"></script>
+  </body>
+</html>
