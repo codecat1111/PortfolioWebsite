@@ -229,7 +229,18 @@ function parseContent(content) {
         inlineCode.push(code);
         return placeholder;
     });
-
+    // Convert images with optional caption
+    html = html.replace(/!\[(.*?)\]\((.*?)(?:\s+"(.*?)")?\)/g, (match, alt, url, caption) => {
+        if (caption) {
+            return `
+                <figure class="post-figure">
+                    <img src="${url}" alt="${alt}" class="post-image">
+                    <figcaption>${caption}</figcaption>
+                </figure>
+            `;
+        }
+        return `<img src="${url}" alt="${alt}" class="post-image">`;
+    });
     // Convert headers
     html = html.replace(/^#{4,}\s+(.*$)/gim, '<h4>$1</h4>');
     html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
@@ -340,6 +351,9 @@ Content Formatting Guidelines for Optimal Parsing:
    - Use \n\n for paragraph breaks
    - Single \n within lists
    - Always end sections with \n\n
+
+8. Images with Caption:
+   - ![Alt text for the image](https://example.com/image.jpg "This is the image caption")
 
 Example List Structure:
 - **Bold Item**: Description\n\n
