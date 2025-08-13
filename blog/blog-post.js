@@ -207,34 +207,21 @@ function populatePostData() {
  */
 function parseContent(content) {
     let html = content;
-    
+
     // Store code blocks temporarily
     const codeBlocks = [];
     html = html.replace(/```([\w-]*)\n([\s\S]*?)\n```/g, (match, language, code) => {
         const placeholder = `___CODE_BLOCK_${codeBlocks.length}___`;
         codeBlocks.push({
             language: language || 'plaintext',
-            // Preserve line breaks and spaces, escape HTML
-            code: code.replace(/[<>]/g, c => ({'<': '&lt;', '>': '&gt;'}[c]))
-                     .split('\n')
-                     .map(line => line.trimRight()) // Remove trailing spaces
-                     .join('\n')
+            code: code.replace(/[<>]/g, c => ({ '<': '&lt;', '>': '&gt;' }[c]))
+                .split('\n')
+                .map(line => line.trimRight())
+                .join('\n')
         });
         return placeholder;
     });
-    // Convert images with optional caption
-    // Format: ![alt text](image-url) or ![alt text](image-url "caption")
-    html = html.replace(/!\[(.*?)\]\((.*?)(?:\s+"(.*?)")?\)/g, (match, alt, url, caption) => {
-        if (caption) {
-            return `
-                <figure class="post-figure">
-                    <img src="${url}" alt="${alt}" class="post-image">
-                    <figcaption>${caption}</figcaption>
-                </figure>
-            `;
-        }
-        return `<img src="${url}" alt="${alt}" class="post-image">`;
-    });
+
     // Store inline code temporarily
     const inlineCode = [];
     html = html.replace(/`([^`]+)`/g, (match, code) => {
@@ -242,9 +229,9 @@ function parseContent(content) {
         inlineCode.push(code);
         return placeholder;
     });
+
+    // Convert headers
     html = html.replace(/^#{4,}\s+(.*$)/gim, '<h4>$1</h4>');
-    
-    // Convert standard headers
     html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
     html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
@@ -254,14 +241,26 @@ function parseContent(content) {
     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
     // Convert lists
-    html = html.replace(/^\s*\n\*/gm, '<ul>\n*');
-    html = html.replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2');
-    html = html.replace(/^\*(.+)/gm, '<li>$1</li>');
-
-    // Convert numeric lists
-    html = html.replace(/^\s*\n\d\./gm, '<ol>\n1.');
-    html = html.replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2');
-    html = html.replace(/^\d\.(.+)/gm, '<li>$1</li>');
+    // Improved list handling
+    let listItems = html.split('\n');
+    let inList = false;
+    html = listItems.map(line => {
+        if (line.trim().startsWith('- ')) {
+            if (!inList) {
+                inList = true;
+                return '<ul><li>' + line.trim().substring(2) + '</li>';
+            }
+            return '<li>' + line.trim().substring(2) + '</li>';
+        } else if (inList && line.trim() === '') {
+            inList = false;
+            return '</ul>';
+        }
+        return line;
+    }).join('\n');
+    
+    if (inList) {
+        html += '</ul>';
+    }
 
     // Convert blockquotes
     html = html.replace(/^\>(.+)/gm, '<blockquote>$1</blockquote>');
@@ -271,7 +270,7 @@ function parseContent(content) {
 
     // Convert paragraphs
     html = html.split(/\n\s*\n/).map(paragraph => {
-        if (paragraph.trim() && !paragraph.includes('___CODE_BLOCK_') && 
+        if (paragraph.trim() && !paragraph.includes('___CODE_BLOCK_') &&
             !paragraph.includes('___INLINE_CODE_') && !paragraph.startsWith('<')) {
             return `<p>${paragraph.trim()}</p>`;
         }
@@ -282,7 +281,7 @@ function parseContent(content) {
     inlineCode.forEach((code, index) => {
         html = html.replace(
             `___INLINE_CODE_${index}___`,
-            `<code>${code.replace(/[<>]/g, c => ({'<': '&lt;', '>': '&gt;'}[c]))}</code>`
+            `<code>${code.replace(/[<>]/g, c => ({ '<': '&lt;', '>': '&gt;' }[c]))}</code>`
         );
     });
 
@@ -297,6 +296,58 @@ function parseContent(content) {
     return html;
 }
 
+/*
+Content Formatting Guidelines for Optimal Parsing:
+
+1. Headers:
+   - Use # for h1, ## for h2, ### for h3, #### for h4
+   - Always add a newline after headers
+   Example: 
+   ## Main Header\n\n
+
+2. Lists:
+   - Start each item with "- " (hyphen followed by space)
+   - Add two newlines (\n\n) between list items
+   - End lists with two newlines before next content
+   Example:
+   - First item\n\n
+   - Second item\n\n
+
+3. Code Blocks:
+   - Use triple backticks with language identifier
+   - Add newline after opening and before closing
+   Example:
+   ```python\n
+   code here\n
+   ```\n\n
+
+4. Text Formatting:
+   - Bold: Use **double asterisks**
+   - Italic: Use *single asterisks*
+   - Add two newlines between paragraphs
+
+5. Blockquotes:
+   - Start with > followed by space
+   - Add two newlines after
+   Example:
+   > Quote text\n\n
+
+6. Links and Images:
+   - Links: [text](url)
+   - Images: ![alt text](url "optional title")
+
+7. Line Breaks:
+   - Use \n\n for paragraph breaks
+   - Single \n within lists
+   - Always end sections with \n\n
+
+Example List Structure:
+- **Bold Item**: Description\n\n
+- **Second Item**: Description\n\n
+- **Third Item**: Description\n\n
+
+Note: Proper spacing and newlines are crucial for correct rendering.
+*/
 
 /**
  * Populate post tags
