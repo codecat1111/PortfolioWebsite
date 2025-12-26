@@ -744,15 +744,21 @@ h5 {
 
 .qualification__content {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem;
+  align-items: stretch;
 }
+
 
 .qualification__item {
   padding: 2rem;
   background-color: var(--gray-color-3);
   border-radius: 8px;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
+
 
 .qualification__item:hover {
   transform: translateY(-5px);
@@ -768,12 +774,17 @@ h5 {
   font-size: 1.8rem;
   color: var(--main-text-color);
   margin-bottom: 1rem;
+  min-height: 2.5em; /* Forces consistent height for titles */
+  display: flex;
+  align-items: center;
 }
+
 .qualification__company-wrapper {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  min-height: 40px; /* Matches logo height */
 }
 
 .qualification__company-logo {
@@ -799,16 +810,18 @@ h5 {
   color: var(--supportive-text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
+  flex-grow: 1; /* Pushes date to bottom */
 }
 
 .qualification__date {
   font-size: 1.4rem;
   color: var(--secondary-accent);
+  margin-top: auto; /* Sticks to bottom */
 }
 
 .qualification__footer {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: auto;
   padding-top: 3rem;
   border-top: 1px solid var(--gray-color);
 }
