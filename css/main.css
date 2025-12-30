@@ -819,9 +819,14 @@ h5 {
   margin-top: auto; /* Sticks to bottom */
 }
 
+/* Add breathing room between Experience and Education blocks */
+.qualification__wrapper + .qualification__wrapper {
+  margin-top: 4rem;
+}
+
 .qualification__footer {
   text-align: center;
-  margin-top: auto;
+  margin-top: 4rem;
   padding-top: 3rem;
   border-top: 1px solid var(--gray-color);
 }
