@@ -794,6 +794,12 @@ h5 {
   object-fit: cover;
 }
 
+.qualification__company-logo--box {
+  border-radius: 4px !important;
+  object-fit: contain !important;
+  background-color: white !important;
+}
+
 .qualification__company {
   font-size: 1.6rem;
   color: var(--secondary-accent);
