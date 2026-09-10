@@ -825,6 +825,33 @@ h5 {
   margin-top: auto; /* Sticks to bottom */
 }
 
+.qualification__date--spaced {
+  margin-bottom: 0.75rem;
+}
+
+.qualification__credential {
+  font-size: 1.2rem;
+  color: var(--supportive-text-color);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+.qualification__link {
+  font-size: var(--fs-sm);
+  color: var(--main-text-color);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  transition: var(--transition);
+  margin-top: auto; /* Sticks to bottom */
+  padding-top: 1rem;
+}
+
+.qualification__link:hover {
+  color: var(--secondary-accent);
+  column-gap: 1rem;
+}
+
 /* Add breathing room between Experience and Education blocks */
 .qualification__wrapper + .qualification__wrapper {
   margin-top: 4rem;
