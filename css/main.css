@@ -825,6 +825,10 @@ h5 {
   margin-top: auto; /* Sticks to bottom */
 }
 
+.qualification__date--spaced {
+  margin-bottom: 0.75rem;
+}
+
 .qualification__credential {
   font-size: 1.2rem;
   color: var(--supportive-text-color);
